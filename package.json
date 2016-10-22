@@ -15,7 +15,9 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "ejs": "^2.5.2",
+    "mocha": "^3.1.2",
     "mysql": "^2.11.1",
     "orm": "^3.1.0"
   }

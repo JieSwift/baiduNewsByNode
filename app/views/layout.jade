@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    if showTests
+        link(rel='stylesheet', href='/vendor/mocha.css')
+
+  body
+    div#mocha
+    if showTests
+        script(src="/javascripts/libs/jquery-2.1.4.min.js")
+        script(src="/javascripts/vendor/mocha.js")
+        script(src="/javascripts/vendor/chai.js")
+    block content
