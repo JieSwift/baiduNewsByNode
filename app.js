@@ -29,20 +29,6 @@ app.use('/', routes);
 app.use('/admin', admin);
 app.use('/news',newsContr);
 
-//测试首页
-// app.use(function(req, res, next) {
-//     res.locals.showTests = app.get('env') !== 'production' &&
-//         req.query.test === '1';
-//     next();
-// });
-
-// app.get('/about', function(req, res) {
-//     res.render('about', {
-//         fortune: fortune.getFortune(),
-//         pageTestScript: '/test/tests-about.js'
-//     });
-// });
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

@@ -2,7 +2,7 @@
  * @Author: HMJ
  * @Date:   2016-10-22 21:23:47
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-23 12:53:11
+ * @Last Modified time: 2016-10-23 13:33:06
  */
 
 'use strict';
@@ -31,8 +31,11 @@ exports.getNews = function(req, res, next) {
 }
 
 exports.getNewsByType = function(req, res, next) {
-    News.find({ 'newstype': req.params.type }, function(err, news) {
+    console.log(req.body.newsType)
+    console.log(req.body.begin)
+    News.find({ 'newsType': req.body.newsType }).limit(6).offset(req.body.end).run(function(err, news) {
         if (err) throw new Error(err);
+        console.log(news);
         res.json(news);
     });
 }

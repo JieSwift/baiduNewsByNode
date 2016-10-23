@@ -2,25 +2,28 @@
  * @Author: HMJ
  * @Date:   2016-10-12 12:41:50
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-23 08:44:32
+ * @Last Modified time: 2016-10-23 13:36:43
  */
 $(document).ready(function() {
     refreshNews("精选", 0, 6);
     indexShow();
     $('.nav li a:first').addClass('underline');
-     $(window).scroll(function() {
-            var scrollTop = $(this).scrollTop();
-            var scrollHeight = $(document).height();
-            var windowHeight = $(this).height();
-            var begin = 0;
-            var end = 6;
-            var indexType =$('.underline').html();
-            if (scrollTop + windowHeight == scrollHeight) {
-                refreshNews(indexType, begin + 6, end + 6);
-            }
-        });
+    $(window).scroll(function() {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var begin = 0;
+        var end = 6;
+        var indexType = $('.underline').html();
+        if (scrollTop + windowHeight == scrollHeight) {
+            refreshNews(indexType, begin + 6, end + 6);
+        }
+    });
 });
-
+/**
+ * 显示首页
+ * @return
+ */
 function indexShow() {
     var nav = $('.nav li a');
     nav.click(function(e) {
@@ -39,20 +42,21 @@ function indexShow() {
 
 function refreshNews(type, begin, end) {
     $.ajax({
-        url: './news/query/'+type,
-        type: 'get',
+        url: './news/query/type',
+        type: 'post',
+        dataType: 'json',
         data: {
-            // 'newsType': type,
+            'newsType': type,
             'begin': begin,
             'end': end
         },
-        dataType: 'json',
         success: function(data) {
             var $article = $('article');
-            $article.empty();
+            // $article.empty();
             var $ul = $('<ul></ul>').addClass('news-lists').prependTo(
                 $article);
             var $lists = $('article ul');
+            $lists.empty();
             $.each(data, function(index, item) {
                 var $list = $('<li></li>').addClass('news-list')
                     .prependTo($lists);
