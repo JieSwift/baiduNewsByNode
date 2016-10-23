@@ -1,23 +1,31 @@
 /*
-* @Author: HMJ
-* @Date:   2016-10-21 22:21:03
-* @Last Modified by:   HMJ
-* @Last Modified time: 2016-10-21 22:45:15
-* @comment:数据库连接连接模块
-*/
+ * @Author: HMJ
+ * @Date:   2016-10-21 22:21:03
+ * @Last Modified by:   HMJ
+ * @Last Modified time: 2016-10-22 21:47:02
+ * @comment:数据库连接连接模块
+ */
 
 'use strict';
-var express = require('express');
-var router = express.Router();
+var orm = require('orm');
+// DB config
+var opts ={
+    database:'baidunews',
+    protocol:'mysql',
+    host:'127.0.0.1',
+    username:'root',
+    password:'123456',
+    query:{
+        pool:true,
+    },
+};
 
-var orm = require("orm");
-orm.connect("mysql://root:123456@localhost/baidunews", function (err, db) {
 
+module.exports = orm.connect(opts, function(err, db) {
+    if (err) {
+        throw new Error(err);
+    }
+    if(db){
+        return db;
+    }
 });
-
-module.exports = orm.connect("mysql://root:123456@localhost/baidunews", function (err, db) {
-  if(err) throw err;
-  console.log('连接成功');
-});
-;
-

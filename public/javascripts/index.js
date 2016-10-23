@@ -2,7 +2,7 @@
  * @Author: HMJ
  * @Date:   2016-10-12 12:41:50
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-16 16:45:02
+ * @Last Modified time: 2016-10-23 08:44:32
  */
 $(document).ready(function() {
     refreshNews("精选", 0, 6);
@@ -39,10 +39,10 @@ function indexShow() {
 
 function refreshNews(type, begin, end) {
     $.ajax({
-        url: './newsIndexServlet',
+        url: './news/query/'+type,
         type: 'get',
         data: {
-            'newsType': type,
+            // 'newsType': type,
             'begin': begin,
             'end': end
         },
