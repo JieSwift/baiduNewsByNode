@@ -2,21 +2,24 @@
  * @Author: HMJ
  * @Date:   2016-10-12 12:41:50
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-23 13:36:43
+ * @Last Modified time: 2016-10-23 14:42:57
  */
 $(document).ready(function() {
     refreshNews("精选", 0, 6);
     indexShow();
     $('.nav li a:first').addClass('underline');
+    var begin = 0;
+    var end = 6;
     $(window).scroll(function() {
         var scrollTop = $(this).scrollTop();
         var scrollHeight = $(document).height();
         var windowHeight = $(this).height();
-        var begin = 0;
-        var end = 6;
         var indexType = $('.underline').html();
         if (scrollTop + windowHeight == scrollHeight) {
-            refreshNews(indexType, begin + 6, end + 6);
+            console.log(begin);
+            setTimeout(refreshNews(indexType, begin, end), 1000);
+            begin += 6;
+            end += 6;
         }
     });
 });

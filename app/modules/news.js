@@ -2,7 +2,7 @@
  * @Author: HMJ
  * @Date:   2016-10-22 21:23:47
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-23 13:33:06
+ * @Last Modified time: 2016-10-23 14:43:16
  */
 
 'use strict';
@@ -30,12 +30,20 @@ exports.getNews = function(req, res, next) {
     });
 }
 
+// function couuntNewsBytype(type) {
+//     News.count({ 'newsType': type }, function(err, count) {
+//         if (err) throw new Error(err);
+//         console.log(count);
+//     });
+// }
+
 exports.getNewsByType = function(req, res, next) {
-    console.log(req.body.newsType)
-    console.log(req.body.begin)
-    News.find({ 'newsType': req.body.newsType }).limit(6).offset(req.body.end).run(function(err, news) {
+    // var limitNum;
+    // num > limitNum ? limitNum = 6 : limitNum = num;
+    // console.log('num'+num);
+    // console.log(limitNum);
+    News.find({ 'newsType': req.body.newsType }).limit(6).offset(req.body.begin).run(function(err, news) {
         if (err) throw new Error(err);
-        console.log(news);
         res.json(news);
     });
 }
@@ -46,7 +54,6 @@ exports.getNewsById = function(req, res, next) {
         res.json(news);
     });
 }
-
 
 exports.addNews = function(req, res, next) {
     News.create({
