@@ -2,7 +2,7 @@
  * @Author: HMJ
  * @Date:   2016-10-12 16:36:20
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-23 12:39:21
+ * @Last Modified time: 2016-10-24 18:22:04
  */
 $(document).ready(
     function() {
@@ -104,7 +104,7 @@ $(document).ready(
 
         });
 
-        //更新新闻
+        //更新新闻查询数据库拿到新闻信息
         var updateId = null;
         $tbody.on('click', '.btnupdate', function() {
             updateId = $(this).nextAll().eq(1).val();
@@ -114,6 +114,7 @@ $(document).ready(
                 type: 'get',
                 dataType: 'json',
                 success: function(data) {
+                    console.log(data[0].newsTime);
                     $('#unewsTitle').val(data[0].newsTitle);
                     $('#unewsType').val(data[0].newsType);
                     $('#unewsSrc').val(data[0].newsSrc);
@@ -126,7 +127,7 @@ $(document).ready(
         $('#updateModal #confirmUpdate').click(function(e) {
             if (updateId) {
                 $.ajax({
-                    url: './news/update',
+                    url: './news/update/only',
                     type: 'post',
                     dataType: 'json',
                     data: {
@@ -143,7 +144,6 @@ $(document).ready(
                     }
                 });
             }
-
         });
 
         function refreshNews() {

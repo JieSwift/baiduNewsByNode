@@ -2,7 +2,8 @@
 * @Author: HMJ
 * @Date:   2016-10-22 22:40:57
 * @Last Modified by:   HMJ
-* @Last Modified time: 2016-10-23 13:36:47
+* @Last Modified time: 2016-10-24 13:12:06
+* 控制器
 */
 
 'use strict';
@@ -15,6 +16,6 @@ router.post('/query/type',news.getNewsByType);
 router.get('/update/query/:id',news.getNewsById);
 router.post('/add',news.addNews);
 router.get('/delete/:id',news.deleteNews);
-router.post('/update',news.updateNews);
+router.post('/update/only',news.updateNews);
 
 module.exports = router;
